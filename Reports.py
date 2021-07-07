@@ -1,6 +1,9 @@
 from pptx import Presentation
+from PIL import Image
 import os.path
 import sys
+
+from pptx.util import Inches
 
 
 class Reports:
@@ -24,8 +27,9 @@ class Reports:
         self.__template()
 
         prs = Presentation()
-        slide_layout = prs.slide_layouts[1]
-        slides = prs.slides.add_slide(slide_layout)
+        slide = prs.slides.add_slide(prs.slide_layouts[5])
+        s = slide.shapes.add_picture('D:\\test\\сетка1\\q1\\Pn_field_x=2.png', Inches(1.0), Inches(0.5))
+        prs.save('test.pptx')
 
     def add_prefix(self, prefix):
         for (key, value) in prefix.items():
@@ -39,4 +43,7 @@ class Reports:
                     self.__images[f'{img.split("_")[0]}_grid{i+1}_{q}'] = f'{self.__path}\\{grid}\\{q}\\{img}'
 
         for item, val in self.__images.items():
+            # with Image.open(val) as img:
+            #     img = img.resize((60, 51))
+            #     img.save(val)
             print(f'{item}: {val}')
