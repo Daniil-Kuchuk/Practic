@@ -9,8 +9,6 @@ class Reports:
         self.__prefix = {}
         self.__path = path if os.path.exists(path) else None
         self.__save_to = save_to if os.path.exists(save_to) else None
-        self.__walk = [item for item in os.walk(path)]
-        self.__numbers_slide = 0
         self.__images = {}
 
     def __stop_program(self):
@@ -50,12 +48,11 @@ class Reports:
                     pos_x += img_width + Pt(10)
                 pos_y += img_height + Pt(10)
 
-        prs.save('C:\\Users\\kuchu\\PycharmProjects\\Practic\\test.pptx')
+        prs.save(self.__save_to)
 
     def add_prefix(self, prefix):
         for (key, value) in prefix.items():
             self.__prefix[key] = value
-        self.__numbers_slide = len(self.__prefix)
 
     def __template(self):
         for i, grid in enumerate(os.listdir(self.__path)):

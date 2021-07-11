@@ -2,7 +2,7 @@ from Reports import Reports
 
 
 def main():
-    p = Reports(path='D:\\test')
+    p = Reports(path='D:\\test', save_to='C:\\Users\\kuchu\\PycharmProjects\\Practic\\test.pptx')
     # prefixes = input('Введите префиксы: ')
     prefixes = 'Pn - давление, V - скорость'
     new_prefix = [prefix.split('-') for prefix in prefixes.split(',')]
